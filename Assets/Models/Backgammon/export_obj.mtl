@@ -1,0 +1,154 @@
+# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
+# File Created: 17.07.2010 13:54:00
+
+newmtl 01___Default
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\turbosquid\_01 backgammon\Textures\wooden.jpg
+	map_Kd D:\turbosquid\_01 backgammon\Textures\wooden.jpg
+	map_bump D:\turbosquid\_01 backgammon\Textures\wooden.jpg
+	bump D:\turbosquid\_01 backgammon\Textures\wooden.jpg
+
+newmtl wood2
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\turbosquid\_01 backgammon\Textures\wood_1.jpg
+	map_Kd D:\turbosquid\_01 backgammon\Textures\wood_1.jpg
+	map_bump D:\turbosquid\_01 backgammon\Textures\wood_1.jpg
+	bump D:\turbosquid\_01 backgammon\Textures\wood_1.jpg
+
+newmtl obj1
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.1961 0.0627 0.0471
+	Kd 0.1961 0.0627 0.0471
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+
+newmtl hinge
+	Ns 24.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5843 0.5451 0.3216
+	Kd 0.5843 0.5451 0.3216
+	Ks 0.4500 0.4500 0.4500
+	Ke 0.0000 0.0000 0.0000
+
+newmtl obj2
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.6706 0.6353 0.4392
+	Kd 0.6706 0.6353 0.4392
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+
+newmtl 1
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\turbosquid\_01 backgammon\Textures\1.jpg
+	map_Kd D:\turbosquid\_01 backgammon\Textures\1.jpg
+
+newmtl 2
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\turbosquid\_01 backgammon\Textures\2.jpg
+	map_Kd D:\turbosquid\_01 backgammon\Textures\2.jpg
+
+newmtl 3
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\turbosquid\_01 backgammon\Textures\3.jpg
+	map_Kd D:\turbosquid\_01 backgammon\Textures\3.jpg
+
+newmtl 4
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\turbosquid\_01 backgammon\Textures\4.jpg
+	map_Kd D:\turbosquid\_01 backgammon\Textures\4.jpg
+
+newmtl 5
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\turbosquid\_01 backgammon\Textures\5.jpg
+	map_Kd D:\turbosquid\_01 backgammon\Textures\5.jpg
+
+newmtl 6
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\turbosquid\_01 backgammon\Textures\6.jpg
+	map_Kd D:\turbosquid\_01 backgammon\Textures\6.jpg
