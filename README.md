@@ -25,3 +25,5 @@ Here's a GIF demo showing the system in action. The Frame Rate is poor due to th
 The demo is setting 5 dice to roll all 6's
 
 ![All Sixes](https://github.com/IainS1986/Rigged-Roll/blob/master/GIFs/test.gif)
+
+![All Sixes](https://github.com/IainS1986/Rigged-Roll/blob/master/GIFs/Demo.gif)
