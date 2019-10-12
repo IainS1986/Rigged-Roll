@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7830284909314523820}
   - component: {fileID: -3988907950045369401}
   - component: {fileID: 8156004290308540435}
+  - component: {fileID: 8119567366242665505}
   - component: {fileID: 7909502353663312098}
   m_Layer: 0
   m_Name: Dice 2
@@ -93,6 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb4481b274d4198428b7dc3cf05a85fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _rotationOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!65 &8156004290308540435
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -106,6 +108,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.21000001, y: 0.21000005, z: 0.21000005}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8119567366242665505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8908172562129410715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1aeaee584937eb41936abb195a4c89d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _diceRotationToNextValue:
+  - {x: 0, y: 0, z: 90}
+  - {x: 90, y: 0, z: 0}
+  - {x: 180, y: 0, z: 0}
+  - {x: -90, y: 0, z: 0}
+  - {x: 0, y: 0, z: -90}
+  - {x: -180, y: 0, z: 0}
 --- !u!54 &7909502353663312098
 Rigidbody:
   m_ObjectHideFlags: 0
