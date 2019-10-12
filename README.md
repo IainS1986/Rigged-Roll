@@ -11,7 +11,17 @@ Basic idea being...
   * Roll 'blank' 3D dice
   * Record position + rotation at every frame of the roll
   * Wait for them to settle
-  * Assign UV coords/dice faces based on the desired dice rolle (i.e. all 6's)
+  * Determine what rotation is needed to achieve the desired result
   * Reset dice to their original state
 
 * Replay all the saved position + rotation state
+* After each step, apply the rotation required to get the desired result
+
+
+# Demos
+
+Here's a GIF demo showing the system in action. The Frame Rate is poor due to the gif screen capture, in reality it runs smoothly.
+
+The demo is setting 5 dice to roll all 6's
+
+![All Sixes](https://github.com/IainS1986/Rigged-Roll/blob/master/GIFs/test.gif)
