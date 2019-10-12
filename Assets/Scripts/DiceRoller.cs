@@ -23,6 +23,22 @@ public class DiceRoller : MonoBehaviour
     [SerializeField]
     private Rigidbody[] _dice;
 
+    private RiggedDice[] _riggedDice;
+
+    private bool _isRolling;
+
+    private bool _replaying;
+
+    void Start()
+    {
+        _riggedDice = new RiggedDice[_dice.Length];
+
+        for(int i=0; i<_dice.Length; i++)
+        {
+            _riggedDice[i] = _dice[i].GetComponent<RiggedDice>();
+        }
+    }
+
     void OnGUI()
     {
         Rect boundary = GetWidgetBoundary(1);
@@ -32,8 +48,46 @@ public class DiceRoller : MonoBehaviour
         AddButton(boundary, index++, "Roll", () => Roll());
     }
 
+    void FixedUpdate()
+    {
+        if (_replaying)
+        {
+            //Step all the dice
+            bool diceDone = true;
+            foreach(var dice in _riggedDice)
+            {
+                if (dice.HasPhysicStepToPlay())
+                {
+                    diceDone = false;
+                    dice.PhysicsStep();
+                }
+            }
+
+            //When all dice "done", finish
+            if (diceDone)
+            {
+                _replaying = false;
+                Physics.autoSimulation = true;
+                _isRolling = false;
+            }
+        }
+    }
+
     private void Roll()
     {
+        if (_isRolling)
+        {
+            return;
+        }
+
+        _isRolling = true;
+
+        // Reset dice state
+        foreach(var dice in _riggedDice)
+        {
+            dice.Reset();
+        }
+
         foreach(var dice in _dice)
         {
             // Add Some throw
@@ -63,6 +117,56 @@ public class DiceRoller : MonoBehaviour
 
             // Spin
             dice.AddTorque(spinVector * spinForce, ForceMode.Impulse);
+        }
+
+        FastForward();
+    }
+
+    private void FastForward()
+    {
+        Physics.autoSimulation = false;
+
+        // Fast forward physics and record dice positions + rotations at each step
+        bool fastfowarding = true;
+        while (fastfowarding)
+        {
+            fastfowarding = false;
+
+            // Step physics
+            Physics.Simulate(Time.fixedDeltaTime);
+
+            // Record Rotation and Position of each dice
+            foreach(var dice in _riggedDice)
+            {
+                dice.RecordStep();
+            }
+
+            // Check if all dice are "settled", if so stop
+            foreach(var dice in _riggedDice)
+            {
+                fastfowarding |= dice.IsRolling();
+            }
+        }
+
+        // Clear Physics + Colliders
+        foreach(var dice in _dice)
+        {
+            dice.isKinematic = true;
+        }
+
+        // Replay
+        Replay();
+    }
+
+    private void Replay()
+    {
+        // Replay all Pos + Rotation state of dice
+        _replaying = true;
+
+        // When done, re-enable physics
+        foreach(var dice in _dice)
+        {
+            dice.isKinematic = false;
         }
     }
 
