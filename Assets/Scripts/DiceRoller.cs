@@ -69,6 +69,13 @@ public class DiceRoller : MonoBehaviour
                 _replaying = false;
                 Physics.autoSimulation = true;
                 _isRolling = false;
+
+                 // Clear Physics + Colliders
+                foreach(var dice in _dice)
+                {
+                    dice.isKinematic = false;
+                    dice.detectCollisions = true;
+                }
             }
         }
     }
@@ -152,22 +159,37 @@ public class DiceRoller : MonoBehaviour
         foreach(var dice in _dice)
         {
             dice.isKinematic = true;
+            dice.detectCollisions = false;
+        }
+
+        // Calculate the rotation needed to get the dice to be all 6s
+        foreach(var dice in _riggedDice)
+        {
+            RiggedRotation rotator = dice.GetComponent<RiggedRotation>();
+            DiceValueEnum valueRolled = rotator.GetValue();
+
+            switch(valueRolled)
+            {
+                case DiceValueEnum.One:
+                    dice.RotationOffest = Quaternion.AngleAxis(180, Vector3.forward);
+                    break;
+                case DiceValueEnum.Two:
+                    dice.RotationOffest = Quaternion.AngleAxis(90, Vector3.forward);
+                    break;
+                case DiceValueEnum.Three:
+                    dice.RotationOffest = Quaternion.AngleAxis(90, Vector3.right);
+                    break;
+                case DiceValueEnum.Four:
+                    dice.RotationOffest = Quaternion.AngleAxis(-90, Vector3.right);
+                    break;
+                case DiceValueEnum.Five:
+                    dice.RotationOffest = Quaternion.AngleAxis(-90, Vector3.forward);
+                    break;
+            }
         }
 
         // Replay
-        Replay();
-    }
-
-    private void Replay()
-    {
-        // Replay all Pos + Rotation state of dice
         _replaying = true;
-
-        // When done, re-enable physics
-        foreach(var dice in _dice)
-        {
-            dice.isKinematic = false;
-        }
     }
 
     public static Rect GetWidgetBoundary(int num_buttons)

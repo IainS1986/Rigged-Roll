@@ -8,12 +8,12 @@ public class RiggedDice : MonoBehaviour
 
     private Rigidbody _rigidBody;
 
-    private List<Vector3> _positions;
+    private List<Vector3> _positions = new List<Vector3>();
     
-    private List<Quaternion> _rotations;
+    private List<Quaternion> _rotations = new List<Quaternion>();
 
     // The rotation offset to result in the rigged roll
-    public Quaternion _rotationOffset;
+    public Quaternion RotationOffest { get; set; }
 
     public void Start()
     {
@@ -23,24 +23,9 @@ public class RiggedDice : MonoBehaviour
     public void Reset()
     {
         _stepIndex = 0;
-        
-        if (_positions != null)
-        {
-            _positions.Clear();
-        }
-        else
-        {
-            _positions = new List<Vector3>();
-        }
-
-        if (_rotations != null)
-        {
-            _rotations.Clear();
-        }
-        else
-        {
-            _rotations = new List<Quaternion>();
-        }
+        RotationOffest = Quaternion.identity;
+        _positions.Clear();
+        _rotations.Clear();
     }
 
     public void RecordStep()
@@ -75,7 +60,7 @@ public class RiggedDice : MonoBehaviour
     public void PhysicsStep()
     {
         transform.position = _positions[_stepIndex];
-        transform.rotation = _rotations[_stepIndex];
+        transform.rotation = _rotations[_stepIndex] * RotationOffest;
 
         _stepIndex++;
     }

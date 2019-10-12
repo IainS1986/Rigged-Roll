@@ -2,7 +2,7 @@
 
 public enum DiceValueEnum
 {
-    One = 1,
+    One = 0,
     Two,
     Three,
     Four,
