@@ -165,7 +165,7 @@ public class DiceRoller : MonoBehaviour
         // Calculate the rotation needed to get the dice to be all 6s
         foreach(var dice in _riggedDice)
         {
-            dice.RotationOffest = dice.GetComponent<RiggedRotation>().GetRotationForValue(DiceValueEnum.One);
+            dice.RotationOffest = dice.GetComponent<RiggedRotation>().GetRotationForValue(DiceValueEnum.Six);
         }
 
         // Replay
