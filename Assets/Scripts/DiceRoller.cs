@@ -21,9 +21,15 @@ public class DiceRoller : MonoBehaviour
     public static int Height = 20;
 
     [SerializeField]
-    private Rigidbody[] _dice;
+    private List<Rigidbody> _dice;
 
-    private RiggedDice[] _riggedDice;
+    [SerializeField]
+    private GameObject _diceSpawner;
+
+    [SerializeField]
+    private GameObject _dicePrefab;
+
+    private List<RiggedDice> _riggedDice;
 
     private bool _isRolling;
 
@@ -31,12 +37,7 @@ public class DiceRoller : MonoBehaviour
 
     void Start()
     {
-        _riggedDice = new RiggedDice[_dice.Length];
-
-        for(int i=0; i<_dice.Length; i++)
-        {
-            _riggedDice[i] = _dice[i].GetComponent<RiggedDice>();
-        }
+        Setup();
     }
 
     void FixedUpdate()
@@ -68,6 +69,16 @@ public class DiceRoller : MonoBehaviour
                     dice.detectCollisions = true;
                 }
             }
+        }
+    }
+
+    private void Setup()
+    {
+        _riggedDice = new List<RiggedDice>();
+
+        for(int i=0; i<_dice.Count; i++)
+        {
+            _riggedDice.Add(_dice[i].GetComponent<RiggedDice>());
         }
     }
 
@@ -165,16 +176,44 @@ public class DiceRoller : MonoBehaviour
 
     void OnGUI()
     {
-        Rect boundary = GetWidgetBoundary(2 + _dice.Length);
+        Rect boundary = GetWidgetBoundary(4 + _riggedDice.Count);
         GUI.Box(boundary, "Rigged Roll");
 
         int index = 1;
         AddButton(boundary, index++, "Roll", () => Roll());
+        AddButton(boundary, index++, "Add Dice", () => AddDice());
+        AddButton(boundary, index++, "Remove Dice", () => RemoveDice());
 
         index++;
-        for(int i=0; i<_riggedDice.Length; i++)
+        for(int i=0; i<_riggedDice.Count; i++)
         {
             AddButton(boundary, index++, "Dice " + (i + 1) + " - " + _riggedDice[i].DesiredRoll, () => AlterDiceValue(i));
+        }
+    }
+
+    public void AddDice()
+    {
+        if (_dice?.Count < 16)
+        {
+            var dice = Instantiate(_dicePrefab, 
+                                    _diceSpawner.transform.position + UnityEngine.Random.onUnitSphere * UnityEngine.Random.Range(0, 10),
+                                    UnityEngine.Random.rotationUniform);
+
+            _dice.Add(dice.GetComponent<Rigidbody>());
+
+            Setup();
+        }
+    }
+
+    public void RemoveDice()
+    {
+        if (_dice?.Count > 0)
+        {
+            Destroy(_dice[_dice.Count - 1].gameObject);
+
+            _dice.RemoveAt(_dice.Count - 1);
+
+            Setup();
         }
     }
 

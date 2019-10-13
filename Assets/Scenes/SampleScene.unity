@@ -787,6 +787,9 @@ MonoBehaviour:
   - {fileID: 657836219}
   - {fileID: 1261924228}
   - {fileID: 761565138}
+  _diceSpawner: {fileID: 2099600470}
+  _dicePrefab: {fileID: 8908172562129410715, guid: 4bada734029778b4699c58b52368f12f,
+    type: 3}
 --- !u!1001 &1224573330
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -974,6 +977,36 @@ Rigidbody:
     type: 3}
   m_PrefabInstance: {fileID: 1007490937}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2099600470
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2099600471}
+  m_Layer: 0
+  m_Name: Dice Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2099600471
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2099600470}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.55, y: 7.15, z: -24.58}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &64488002619824724 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8925033663761008831, guid: 03bf06034258a4d478b8230f26281c80,
