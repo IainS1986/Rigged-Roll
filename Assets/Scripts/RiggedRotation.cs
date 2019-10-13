@@ -4,15 +4,6 @@ using UnityEngine;
 
 public class RiggedRotation : MonoBehaviour
 {
-    // Face orientation:
-    // 1 - up
-    // 6 - -up
-    
-    // 2 - right
-    // 5 - -right
-
-    // 3 - -forward
-    // 4 - forward 
     public DiceValueEnum GetValue()
     {
         var upAngle = Vector3.Angle(transform.up, Vector3.up);
@@ -56,5 +47,142 @@ public class RiggedRotation : MonoBehaviour
 
         // Shrug
         return DiceValueEnum.One;
+    }
+
+    public Quaternion GetRotationForValue(DiceValueEnum desiredValue)
+    {
+        DiceValueEnum valueRolled = GetValue();
+
+        switch(desiredValue)
+        {
+            case DiceValueEnum.One:
+                return GetRotationForOne(valueRolled);
+            case DiceValueEnum.Two:
+                return GetRotationForTwo(valueRolled);
+            case DiceValueEnum.Three:
+                return GetRotationForThree(valueRolled);
+            case DiceValueEnum.Four:
+                return GetRotationForFour(valueRolled);
+            case DiceValueEnum.Five:
+                return GetRotationForFive(valueRolled);
+            case DiceValueEnum.Six:
+                return GetRotationForSix(valueRolled);
+        }
+
+        return Quaternion.identity;
+    }
+
+    // TODO FIgure this out better!!!
+    private Quaternion GetRotationForOne(DiceValueEnum currentValue)
+    {
+        switch(currentValue)
+        {
+            case DiceValueEnum.Two:
+                return Quaternion.AngleAxis(-90, Vector3.forward);
+            case DiceValueEnum.Three:
+                return Quaternion.AngleAxis(-90, Vector3.right);
+            case DiceValueEnum.Four:
+                return Quaternion.AngleAxis(90, Vector3.right);
+            case DiceValueEnum.Five:
+                return Quaternion.AngleAxis(90, Vector3.forward);
+            case DiceValueEnum.Six:
+                return Quaternion.AngleAxis(180, Vector3.forward);
+        }
+
+        return Quaternion.identity;
+    }
+    private Quaternion GetRotationForTwo(DiceValueEnum currentValue)
+    {
+        switch(currentValue)
+        {
+            case DiceValueEnum.One:
+                return Quaternion.AngleAxis(90, Vector3.forward);
+            case DiceValueEnum.Three:
+                return Quaternion.AngleAxis(90, Vector3.up);
+            case DiceValueEnum.Four:
+                return Quaternion.AngleAxis(-90, Vector3.up);
+            case DiceValueEnum.Five:
+                return Quaternion.AngleAxis(180, Vector3.up);
+            case DiceValueEnum.Six:
+                return Quaternion.AngleAxis(-90, Vector3.forward);
+        }
+
+        return Quaternion.identity;
+    }
+
+    private Quaternion GetRotationForThree(DiceValueEnum currentValue)
+    {
+        switch(currentValue)
+        {
+            case DiceValueEnum.One:
+                return Quaternion.AngleAxis(90, Vector3.right);
+            case DiceValueEnum.Two:
+                return Quaternion.AngleAxis(-90, Vector3.up);
+            case DiceValueEnum.Four:
+                return Quaternion.AngleAxis(180, Vector3.up);
+            case DiceValueEnum.Five:
+                return Quaternion.AngleAxis(90, Vector3.up);
+            case DiceValueEnum.Six:
+                return Quaternion.AngleAxis(-90, Vector3.right);
+        }
+
+        return Quaternion.identity;
+    }
+
+    private Quaternion GetRotationForFour(DiceValueEnum currentValue)
+    {
+        switch(currentValue)
+        {
+            case DiceValueEnum.One:
+                return Quaternion.AngleAxis(-90, Vector3.right);
+            case DiceValueEnum.Two:
+                return Quaternion.AngleAxis(90, Vector3.up);
+            case DiceValueEnum.Three:
+                return Quaternion.AngleAxis(180, Vector3.up);
+            case DiceValueEnum.Five:
+                return Quaternion.AngleAxis(-90, Vector3.up);
+            case DiceValueEnum.Six:
+                return Quaternion.AngleAxis(90, Vector3.right);
+        }
+
+        return Quaternion.identity;
+    }
+
+    private Quaternion GetRotationForFive(DiceValueEnum currentValue)
+    {
+        switch(currentValue)
+        {
+            case DiceValueEnum.One:
+                return Quaternion.AngleAxis(-90, Vector3.forward);
+            case DiceValueEnum.Two:
+                return Quaternion.AngleAxis(180, Vector3.up);
+            case DiceValueEnum.Three:
+                return Quaternion.AngleAxis(-90, Vector3.up);
+            case DiceValueEnum.Four:
+                return Quaternion.AngleAxis(90, Vector3.up);
+            case DiceValueEnum.Six:
+                return Quaternion.AngleAxis(90, Vector3.forward);
+        }
+
+        return Quaternion.identity;
+    }
+
+    private Quaternion GetRotationForSix(DiceValueEnum currentValue)
+    {
+        switch(currentValue)
+        {
+            case DiceValueEnum.One:
+                return Quaternion.AngleAxis(180, Vector3.forward);
+            case DiceValueEnum.Two:
+                return Quaternion.AngleAxis(90, Vector3.forward);
+            case DiceValueEnum.Three:
+                return Quaternion.AngleAxis(90, Vector3.right);
+            case DiceValueEnum.Four:
+                return Quaternion.AngleAxis(-90, Vector3.right);
+            case DiceValueEnum.Five:
+                return Quaternion.AngleAxis(-90, Vector3.forward);
+        }
+
+        return Quaternion.identity;
     }
 }

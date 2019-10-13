@@ -12,6 +12,8 @@ public class RiggedDice : MonoBehaviour
     
     private List<Quaternion> _rotations = new List<Quaternion>();
 
+    public DiceValueEnum _desiredValue = DiceValueEnum.Six;
+
     // The rotation offset to result in the rigged roll
     public Quaternion RotationOffest { get; set; }
 
