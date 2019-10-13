@@ -39,15 +39,6 @@ public class DiceRoller : MonoBehaviour
         }
     }
 
-    void OnGUI()
-    {
-        Rect boundary = GetWidgetBoundary(1);
-        GUI.Box(boundary, "Rigged Roll");
-
-        int index = 1;
-        AddButton(boundary, index++, "Roll", () => Roll());
-    }
-
     void FixedUpdate()
     {
         if (_replaying)
@@ -165,11 +156,41 @@ public class DiceRoller : MonoBehaviour
         // Calculate the rotation needed to get the dice to be all 6s
         foreach(var dice in _riggedDice)
         {
-            dice.RotationOffest = dice.GetComponent<RiggedRotation>().GetRotationForValue(DiceValueEnum.Six);
+            dice.RotationOffest = dice.GetComponent<RiggedRotation>().GetRotationForValue(dice.DesiredRoll);
         }
 
         // Replay
         _replaying = true;
+    }
+
+    void OnGUI()
+    {
+        Rect boundary = GetWidgetBoundary(2 + _dice.Length);
+        GUI.Box(boundary, "Rigged Roll");
+
+        int index = 1;
+        AddButton(boundary, index++, "Roll", () => Roll());
+
+        index++;
+        for(int i=0; i<_riggedDice.Length; i++)
+        {
+            AddButton(boundary, index++, "Dice " + (i + 1) + " - " + _riggedDice[i].DesiredRoll, () => AlterDiceValue(i));
+        }
+    }
+
+    public void AlterDiceValue(int index)
+    {
+        int currentDesiredRoll = (int)_riggedDice[index].DesiredRoll;
+        if (currentDesiredRoll == 5)
+        {
+            currentDesiredRoll = 0;
+        }
+        else
+        {
+            currentDesiredRoll++;
+        }
+
+        _riggedDice[index].DesiredRoll = (DiceValueEnum)currentDesiredRoll;
     }
 
     public static Rect GetWidgetBoundary(int num_buttons)
