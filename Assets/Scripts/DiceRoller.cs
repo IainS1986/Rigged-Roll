@@ -37,6 +37,12 @@ public class DiceRoller : MonoBehaviour
 
     void Start()
     {
+        // Spawn five dice to start
+        for(int i=0; i<5; i++)
+        {
+            AddDice();
+        }
+        
         Setup();
     }
 
