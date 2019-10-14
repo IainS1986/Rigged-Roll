@@ -15,6 +15,10 @@ public class RiggedDice : MonoBehaviour
     // The rotation offset to result in the rigged roll
     public Quaternion RotationOffest { get; set; }
 
+    public Quaternion OriginalRotation { get; set; }
+
+    public Vector3 OriginalPosition { get; set; }
+
     public DiceValueEnum DesiredRoll { get; set; } = DiceValueEnum.Six;
 
     public void Start()

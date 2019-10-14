@@ -135,6 +135,13 @@ public class DiceRoller : MonoBehaviour
     {
         Physics.autoSimulation = false;
 
+        // Record starting positions and rotations
+        for(int i=0; i<_riggedDice.Count; i++)
+        {
+            _riggedDice[i].OriginalPosition = _dice[i].transform.position;
+            _riggedDice[i].OriginalRotation = _dice[i].transform.rotation;
+        }
+
         // Fast forward physics and record dice positions + rotations at each step
         bool fastfowarding = true;
         while (fastfowarding)
@@ -168,6 +175,13 @@ public class DiceRoller : MonoBehaviour
         foreach(var dice in _riggedDice)
         {
             dice.RotationOffest = dice.GetComponent<RiggedRotation>().GetRotationForValue(dice.DesiredRoll);
+        }
+
+        // Put dice back to original positions
+        for(int i=0; i<_dice.Count; i++)
+        {
+            _dice[i].transform.position = _riggedDice[i].OriginalPosition;
+            _dice[i].transform.rotation = _riggedDice[i].OriginalRotation;
         }
 
         // Replay
