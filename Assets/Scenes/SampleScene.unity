@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 357373138}
   - component: {fileID: 357373141}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Bounding Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -169,8 +169,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 357373137}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.13, y: 7.68, z: -10.78}
-  m_LocalScale: {x: 42.65, y: 16, z: 54.54}
+  m_LocalPosition: {x: 1.13, y: 25, z: -10.78}
+  m_LocalScale: {x: 42.65, y: 50, z: 54.54}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -612,7 +612,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2099600470}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.55, y: 7.15, z: -24.58}
+  m_LocalPosition: {x: 0.55, y: 13.9, z: -24.58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
